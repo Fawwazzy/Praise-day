@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Birthday, My Love! ❤️</title>
+  <style>
+    /* Global Styles */
+    :root {
+      --primary-color: #ff6b81;
+      --secondary-color: #ff8eac;
+      --bg-gradient: linear-gradient(135deg, #0d0f18 0%, #1a1c2e 50%, #2a1b2e 100%);
+      --glass-bg: rgba(255, 255, 255, 0.07);
+      --glass-border: rgba(255, 255, 255, 0.15);
+      --text-color: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    body {
+      background: var(--bg-gradient);
+      color: var(--text-color);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem 1rem;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Floating Petals Canvas / Background */
+    .petal {
+      position: fixed;
+      background-color: var(--primary-color);
+      border-radius: 150% 0 150% 0;
+      opacity: 0.7;
+      pointer-events: none;
+      z-index: 1;
+      animation: float linear infinite;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(-10vh) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(105vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    /* Container Card */
+    .container {
+      max-width: 700px;
+      width: 100%;
+      background: var(--glass-bg);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--glass-border);
+      border-radius: 24px;
+      padding: 2.5rem 1.5rem;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+      z-index: 2;
+      text-align: center;
+      animation: fadeIn 1.2s ease-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    h1 {
+      font-size: 2.4rem;
+      background: linear-gradient(45deg, #ff6b81, #ffa8a8);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 0.8rem;
+    }
+
+    p.subtitle {
+      font-size: 1.1rem;
+      color: #cbd5e1;
+      margin-bottom: 2rem;
+      line-height: 1.6;
+    }
+
+    /* Section Headers */
+    .section-title {
+      font-size: 1.3rem;
+      margin: 2rem 0 1rem;
+      color: var(--secondary-color);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+
+    /* Spotify Embed Player Styling */
+    .spotify-container {
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+      margin-bottom: 2rem;
+    }
+
+    /* Google Photos Section */
+    .photos-card {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--glass-border);
+      border-radius: 18px;
+      padding: 1.5rem;
+      margin-top: 1.5rem;
+      transition: transform 0.3s ease;
+    }
+
+    .photos-card:hover {
+      transform: translateY(-3px);
+    }
+
+    .btn-photos {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: linear-gradient(135deg, #ff6b81, #ff4757);
+      color: white;
+      text-decoration: none;
+      padding: 0.8rem 1.8rem;
+      border-radius: 50px;
+      font-weight: 600;
+      margin-top: 1rem;
+      box-shadow: 0 4px 15px rgba(255, 107, 129, 0.4);
+      transition: all 0.3s ease;
+    }
+
+    .btn-photos:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 20px rgba(255, 107, 129, 0.6);
+    }
+
+    /* Interactive Memory Grid Placeholder */
+    .photo-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 10px;
+      margin-top: 1.2rem;
+    }
+
+    .photo-grid img {
+      width: 100%;
+      height: 130px;
+      object-fit: cover;
+      border-radius: 12px;
+      border: 1px solid var(--glass-border);
+      transition: transform 0.3s ease;
+    }
+
+    .photo-grid img:hover {
+      transform: scale(1.06);
+    }
+
+    /* Footer */
+    footer {
+      margin-top: 2rem;
+      color: #94a3b8;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Floating Flower Petal Background Container -->
+  <div id="petals-container"></div>
+
+  <div class="container">
+    <h1>Happy Birthday! ✨ 🎉</h1>
+    <p class="subtitle">
+      Welcome to your official birthday page—crafted just for you with love, 
+      your favorite soundtrack, and unforgettable memories.
+    </p>
+
+    <!-- Spotify Playlist Integration -->
+    <div class="section-title">🎵 The Soundtrack</div>
+    <div class="spotify-container">
+      <iframe 
+        style="border-radius:12px" 
+        src="https://open.spotify.com/embed/playlist/4lr8AdskSsHQoLJoOW0Wak?utm_source=generator&theme=0" 
+        width="100%" 
+        height="352" 
+        frameBorder="0" 
+        allowfullscreen="" 
+        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+        loading="lazy">
+      </iframe>
+    </div>
+
+    <!-- Google Photos Album Link Section -->
+    <div class="section-title">📸 Our Photo Album</div>
+    <div class="photos-card">
+      <p style="color: #e2e8f0;">Explore the full high-res album directly on Google Photos:</p>
+      
+      <a href="https://photos.app.goo.gl/HTuYUN3mamTCYYDQ7" target="_blank" rel="noopener noreferrer" class="btn-photos">
+        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14zm-5-7l-3 3.72L9 13l-3 4h12l-4-5z"/>
+        </svg>
+        Open Shared Photo Album
+      </a>
+
+      <!-- Direct Image Grid Placeholder (Optional: Add direct image links from repo or imgur if desired) -->
+      <div class="photo-grid">
+        <img src="https://picsum.photos/300/300?random=1" alt="Memory 1" />
+        <img src="https://picsum.photos/300/300?random=2" alt="Memory 2" />
+        <img src="https://picsum.photos/300/300?random=3" alt="Memory 3" />
+        <img src="https://picsum.photos/300/300?random=4" alt="Memory 4" />
+      </div>
+    </div>
+
+    <footer>Made with ❤️</footer>
+  </div>
+
+  <script>
+    // Script to generate floating flower petals
+    function createPetals() {
+      const container = document.getElementById('petals-container');
+      const petalCount = 18;
+
+      for (let i = 0; i < petalCount; i++) {
+        const petal = document.createElement('div');
+        petal.classList.add('petal');
+        
+        // Random sizes, positions, and speeds
+        const size = Math.random() * 12 + 8;
+        petal.style.width = `${size}px`;
+        petal.style.height = `${size * 1.4}px`;
+        petal.style.left = `${Math.random() * 100}vw`;
+        petal.style.animationDuration = `${Math.random() * 5 + 6}s`;
+        petal.style.animationDelay = `${Math.random() * 5}s`;
+        
+        container.appendChild(petal);
+      }
+    }
+    createPetals();
+  </script>
+</body>
+</html>
